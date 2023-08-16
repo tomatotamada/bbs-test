@@ -14,10 +14,11 @@ $res = null;
 
 //データベース接続
 try {
-    $pdo = new PDO('mysql:charset=UTF8;dbname=bbs;host=localhost', 'root', 'root');
+    $pdo = new PDO('mysql:charset=UTF8;dbname=LAA1474202-mqqzdu;host=mysql208.phy.lolipop.lan', 'LAA1474202', 'iori2002');
 } catch (PDOException $e) {
     //接続エラーのときエラー内容を取得する
     $error_message[] = $e->getMessage();
+    echo "エラー";
 }
 
 //送信して受け取ったデータは$_POSTの中に自動的に入る。
@@ -82,6 +83,9 @@ if (!empty($_POST["submitButton"])) {
 //DBからコメントデータを取得する
 $sql = "SELECT username, comment, post_date FROM comment ORDER BY post_date ASC";
 $message_array = $pdo->query($sql);
+
+//$sql = "SELECT 'id', 'username', 'comment', 'post_date' FROM `bbs-table`"
+//$message_array = $pdo->query($sql);
 
 
 //DB接続を閉じる
